@@ -1,7 +1,23 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import { CssBaseline, Container } from "@material-ui/core"
+
+import '../styles/globals.css'
+
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <CssBaseline />
+      <Head>
+        <title>B3 Magical Formula</title>
+        <meta name="description" content="B3 Magical Formula" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Container>
+        <Component {...pageProps} />
+      </Container>
+    </>
+  )
 }
-export default MyApp
+export default App
