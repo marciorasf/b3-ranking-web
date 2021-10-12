@@ -30,6 +30,10 @@ const serverApi = {
     const response = await apiService.post("find", options)
     return response.data as StockWithPosition[]
   },
+  async strategies(): Promise<string[]> {
+    const response = await apiService.post("strategies")
+    return response.data as string[]
+  },
 }
 
 export default serverApi
