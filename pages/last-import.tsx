@@ -13,7 +13,6 @@ const LastImport: NextPage = () => {
 
   async function getAndUpdateLastImport() {
     const result = await serverApi.lastImport()
-    console.log(result)
     setLastImport(result)
   }
 
