@@ -1,36 +1,65 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Link from "next/link"
-import { CssBaseline, Container, List, ListItem, Link as MuiLink } from "@material-ui/core"
+
+import { useState } from 'react'
+import { Link as MuiLink, Grid, Table, TableHead, TableRow, TableCell, TableBody } from "@material-ui/core"
+
+import serverApi from '../utils/server-api'
+import { StockWithPosition } from '../utils/protocols'
+import useDidMount from '../hooks/useDidMount'
 
 const Ranking: NextPage = () => {
-  function ItemLink(href: string, label: string) {
-    return (
-      <Link href={href} passHref >
-        <MuiLink>
-          <ListItem disableGutters>
-            {label}
-          </ListItem>
-        </MuiLink>
-      </Link>
-    )
+  const [ranking, setRanking] = useState<StockWithPosition[]>([])
+
+  async function getAndUpdateRanking() {
+    const result = await serverApi.ranking()
+    setRanking(result)
   }
 
-  return (
-    <Container>
-      <CssBaseline />
-      <Head>
-        <title>B3 Magical Formula</title>
-        <meta name="description" content="B3 Magical Formula" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  useDidMount(() => {
+    getAndUpdateRanking()
+  })
 
-      <List>
-        {ItemLink("last-import", "Last Import")}
-        {ItemLink("ranking", "Ranking")}
-        {ItemLink("find", "Find")}
-      </List>
-    </Container>
+  return (
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <Link href="/" passHref >
+          <MuiLink>
+            Home
+          </MuiLink>
+        </Link>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                Position
+              </TableCell>
+
+              <TableCell>
+                Stock
+              </TableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {ranking.map(stock => (
+              <TableRow>
+                <TableCell>
+                  {stock.position}
+                </TableCell>
+
+                <TableCell>
+                  {stock.code}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Grid>
+    </Grid>
   )
 }
 
