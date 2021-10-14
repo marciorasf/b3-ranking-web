@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Link from "next/link"
 
-import { Link as MuiLink, Grid, Typography } from "@material-ui/core"
+import { Link as MuiLink, Grid, Typography, Button } from "@material-ui/core"
 import { useState } from "react"
 
 import serverApi from '../utils/server-api'
@@ -28,6 +28,12 @@ const LastImport: NextPage = () => {
             Home
           </MuiLink>
         </Link>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Button onClick={serverApi.forceImport} color="primary" variant="contained">
+          Force Last Import
+        </Button>
       </Grid>
 
       <Grid item xs={12}>
