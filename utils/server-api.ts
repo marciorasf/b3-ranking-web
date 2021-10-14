@@ -1,4 +1,5 @@
 import axios from "axios"
+
 import {
   FindOptions,
   RankingOptions,
@@ -6,11 +7,8 @@ import {
   StockWithPosition,
 } from "./protocols"
 
-export const __api_url__ =
-  process.env.REACT_APP_API_URL || "http://localhost:3000"
-
 const apiService = axios.create({
-  baseURL: __api_url__,
+  baseURL: process.env.API_URL,
   withCredentials: true,
 })
 
