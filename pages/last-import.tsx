@@ -96,7 +96,7 @@ const LastImport: NextPage = () => {
                 </TableCell>
 
                 <TableCell>
-                  Average Daily Liquidity
+                  Current Price*
                 </TableCell>
 
                 <TableCell>
@@ -113,8 +113,8 @@ const LastImport: NextPage = () => {
                   </TableCell>
 
                   <TableCell>
-                    {stock.indicatorsValues.liquidez_media_diaria
-                      ? `R$ ${Math.round(stock.indicatorsValues.liquidez_media_diaria)}`
+                    {stock.indicatorsValues.preco_atual
+                      ? `R$ ${stock.indicatorsValues.preco_atual}`
                       : "-"
                     }
                   </TableCell>
@@ -128,6 +128,10 @@ const LastImport: NextPage = () => {
               ))}
             </TableBody>
           </Table>
+        </Grid>
+
+        <Grid item xs={12}>
+          Current Price* = price of the stock when the data was extracted.
         </Grid>
       </Grid>
 

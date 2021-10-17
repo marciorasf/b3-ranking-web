@@ -7,11 +7,11 @@ export type StockImport = {
 
 export type Stock = {
   code: string
-
   indicatorsValues: StockIndicators
 }
 
 export type StockIndicators = {
+  preco_atual?: number
   liquidez_media_diaria?: number
   dividend_yield?: number
   preco_da_acao_por_lucro?: number
