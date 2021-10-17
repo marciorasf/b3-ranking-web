@@ -107,7 +107,7 @@ const LastImport: NextPage = () => {
                   </TableCell>
 
                   <TableCell>
-                    Show Indicators
+                    Indicators
                   </TableCell>
                 </TableRow>
               </TableHead>
