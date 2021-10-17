@@ -22,7 +22,7 @@
     "@types/react": "^17.0",
     "@typescript-eslint/eslint-plugin": "^5.0",
     "@typescript-eslint/parser": "^5.0",
-    "eslint": "^8.0",
+    "eslint": "^8.0.1",
     "eslint-config-airbnb-base": "^14.2",
     "eslint-config-next": "^11.1",
     "eslint-config-prettier": "^8.3",
