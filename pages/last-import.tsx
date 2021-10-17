@@ -114,7 +114,7 @@ const LastImport: NextPage = () => {
             )}
             rows={lastImport.stocks}
             bodyRowFn={(stock: Stock) => (
-              <TableRow>
+              <TableRow key={stock.code}>
                 <TableCell>
                   {stock.code}
                 </TableCell>

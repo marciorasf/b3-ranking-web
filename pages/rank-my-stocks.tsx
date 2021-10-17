@@ -132,7 +132,7 @@ const RankMyStocks: NextPage = () => {
           )}
           bodyRowFn={
             (stock: StockWithPosition) => (
-              <TableRow>
+              <TableRow key={stock.code}>
                 <TableCell>
                   {stock.position}
                 </TableCell>
