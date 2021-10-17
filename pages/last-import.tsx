@@ -54,12 +54,6 @@ const LastImport: NextPage = () => {
     <>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Button onClick={serverApi.forceImport} color="primary" variant="contained">
-            Force New Import
-          </Button>
-        </Grid>
-
-        <Grid item xs={12}>
           <Box display="flex" alignItems="center">
             <Typography variant="h6">
               Date:
@@ -138,6 +132,14 @@ const LastImport: NextPage = () => {
 
         <Grid item xs={12}>
           Current Price* = price of the stock when the data was extracted.
+        </Grid>
+
+        <Grid item xs={12}>
+          <Spacing orientation="horizontal" size={2} />
+
+          <Button onClick={serverApi.forceImport} color="secondary" variant="outlined" fullWidth>
+            Force New Import
+          </Button>
         </Grid>
       </Grid>
 
