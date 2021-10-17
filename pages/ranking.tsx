@@ -2,28 +2,106 @@ import type { NextPage } from 'next'
 import Link from "next/link"
 
 import { useState } from 'react'
-import { Link as MuiLink, Grid, Table, TableHead, TableRow, TableCell, TableBody } from "@material-ui/core"
+import {
+  Button,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@material-ui/core"
 
 import serverApi from '../utils/server-api'
-import { StockWithPosition } from '../utils/protocols'
+import { RankingOptions, StockWithPosition } from '../utils/protocols'
 import useDidMount from '../hooks/useDidMount'
 
 const Ranking: NextPage = () => {
   const [ranking, setRanking] = useState<StockWithPosition[]>([])
+  const [strategies, setStrategies] = useState<string[]>([])
+  const [options, setOptions] = useState<RankingOptions>()
 
-  async function getAndUpdateRanking() {
+  async function getAndUpdateStrategies() {
+    const result = await serverApi.strategies()
+    setStrategies(result)
+  }
+
+  function handleChangeOptions(option: keyof RankingOptions, value: string | boolean) {
+    setOptions({
+      ...options,
+      [option]: value
+    })
+  }
+
+  async function updateRanking() {
+    console.log(options)
     const result = await serverApi.ranking()
     setRanking(result)
   }
 
   useDidMount(() => {
-    getAndUpdateRanking()
+    getAndUpdateStrategies()
   })
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Table>
+        <Grid container alignItems="center" spacing={3}>
+          <Grid item xs={4}>
+            <FormControl fullWidth variant="outlined">
+              <InputLabel>Strategy</InputLabel>
+
+              <Select
+                value={options?.strategy}
+                label="Strategy"
+                onChange={({ target }) =>
+                  handleChangeOptions(
+                    "strategy",
+                    target.value as string
+                  )
+                }
+              >
+                {strategies.map(strategy => (
+                  <MenuItem value={strategy}>{strategy}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <Grid item>
+            <FormGroup>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={options?.filterStocks}
+                    onChange={({ target }) => handleChangeOptions("filterStocks", target.checked)}
+                  />}
+                label="Filter same enterprise stocks"
+              />
+            </FormGroup>
+          </Grid>
+
+          <Grid item>
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={updateRanking}
+            >
+              Rank
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+
+      <Grid item xs={12}>
+        <Table size="small">
           <TableHead>
             <TableRow>
               <TableCell>
@@ -31,7 +109,7 @@ const Ranking: NextPage = () => {
               </TableCell>
 
               <TableCell>
-                Stock
+                Stock Code
               </TableCell>
             </TableRow>
           </TableHead>
