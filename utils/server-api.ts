@@ -29,7 +29,7 @@ const serverApi = {
     return response.data as StockWithPosition[]
   },
   async strategies(): Promise<string[]> {
-    const response = await apiService.post("strategies")
+    const response = await apiService.get("strategies")
     return response.data as string[]
   },
 }
