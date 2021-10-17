@@ -56,8 +56,8 @@ const Ranking: NextPage = () => {
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Grid container alignItems="center" spacing={3}>
-          <Grid item xs={4}>
-            <FormControl fullWidth variant="outlined">
+          <Grid item >
+            <FormControl variant="outlined">
               <InputLabel>Strategy</InputLabel>
 
               <Select

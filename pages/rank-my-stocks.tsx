@@ -30,7 +30,7 @@ const RankMyStocks: NextPage = () => {
   const [strategies, setStrategies] = useState<string[]>([])
   const [options, setOptions] = useState<Options>({
     strategy: "greenblatt",
-    stocks: "ITSA, ARZZ",
+    stocks: "",
   })
 
   async function getAndUpdateStrategies() {
@@ -70,8 +70,8 @@ const RankMyStocks: NextPage = () => {
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Grid container alignItems="center" spacing={3}>
-          <Grid item xs={4}>
-            <FormControl fullWidth variant="outlined">
+          <Grid item >
+            <FormControl variant="outlined">
               <InputLabel>Strategy</InputLabel>
 
               <Select
@@ -91,12 +91,13 @@ const RankMyStocks: NextPage = () => {
             </FormControl>
           </Grid>
 
-          <Grid item xs={4}>
+          <Grid item xs>
             <TextField
+              fullWidth
               label="Stocks"
               variant="outlined"
               value={options.stocks}
-              fullWidth
+              placeholder="B3SA, SAPR"
               onChange={({ target }) => handleChangeOptions("stocks", target.value)}
             />
           </Grid>
