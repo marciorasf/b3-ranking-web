@@ -53,7 +53,6 @@ export type StockWithPosition = {
 export type RankingOptions = {
   strategy?: string
   filterStocks?: boolean
-  numberOfStocks?: number
 }
 
 export type FindOptions = {
