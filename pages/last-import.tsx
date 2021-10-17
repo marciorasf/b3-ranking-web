@@ -143,14 +143,16 @@ const LastImport: NextPage = () => {
         {popoverData?.stock && (
           <Container>
             <Grid container spacing={1}>
-              {Object.entries(popoverData?.stock.indicatorsValues).map(([indicator, value]) => (
-                <Grid item xs={12}>
-                  <Typography variant="body2">
-                    {indicator}: {value}
-                  </Typography>
-                </Grid>
-              )
-              )}
+              {Object.entries(popoverData?.stock.indicatorsValues)
+                .filter(([indicator]) => indicator !== "_id")
+                .map(([indicator, value]) => (
+                  <Grid item xs={12}>
+                    <Typography variant="body2">
+                      {indicator}: {value}
+                    </Typography>
+                  </Grid>
+                )
+                )}
             </Grid>
           </Container>
         )}
