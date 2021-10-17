@@ -130,7 +130,7 @@ const RankMyStocks: NextPage = () => {
             </TableHead>
           )}
           bodyRowFn={
-            (stock: any) => (
+            (stock: StockWithPosition) => (
               <TableRow>
                 <TableCell>
                   {stock.position}
@@ -142,6 +142,7 @@ const RankMyStocks: NextPage = () => {
               </TableRow>
             )
           }
+          paginationColSpan={2}
         />
       </Grid>
     </Grid>

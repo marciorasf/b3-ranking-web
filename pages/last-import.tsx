@@ -20,7 +20,7 @@ import { useState } from "react"
 import serverApi from '../utils/server-api'
 import { Stock, StockImport } from '../utils/protocols'
 import useDidMount from '../hooks/useDidMount'
-import { Spacing } from '../components'
+import { Spacing, TableWithPagination } from '../components'
 
 const LastImport: NextPage = () => {
   const [lastImport, setLastImport] = useState<StockImport>()
@@ -87,46 +87,48 @@ const LastImport: NextPage = () => {
 
           <Spacing orientation="horizontal" size={1} />
 
-          <Table size="small">
-            <TableHead>
-              <TableRow>
-                <TableCell>
-                  Stock Code
-                </TableCell>
+          <TableWithPagination
+            head={(
 
-                <TableCell>
-                  Current Price*
-                </TableCell>
-
-                <TableCell>
-                  Show Indicators
-                </TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {lastImport.stocks.map(stock => (
+              <TableHead>
                 <TableRow>
                   <TableCell>
-                    {stock.code}
+                    Stock Code
                   </TableCell>
 
                   <TableCell>
-                    {stock.indicatorsValues.preco_atual
-                      ? `R$ ${stock.indicatorsValues.preco_atual}`
-                      : "-"
-                    }
+                    Current Price*
                   </TableCell>
 
                   <TableCell>
-                    <IconButton onClick={(event) => handleOpenPopover(event.currentTarget, stock)}>
-                      <ShowIndicatorsIcon />
-                    </IconButton>
+                    Show Indicators
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+            )}
+            rows={lastImport.stocks}
+            bodyRowFn={(stock: Stock) => (
+              <TableRow>
+                <TableCell>
+                  {stock.code}
+                </TableCell>
+
+                <TableCell>
+                  {stock.indicatorsValues.preco_atual
+                    ? `R$ ${stock.indicatorsValues.preco_atual}`
+                    : "-"
+                  }
+                </TableCell>
+
+                <TableCell>
+                  <IconButton onClick={(event) => handleOpenPopover(event.currentTarget, stock)}>
+                    <ShowIndicatorsIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            )}
+            paginationColSpan={3}
+          />
         </Grid>
 
         <Grid item xs={12}>
