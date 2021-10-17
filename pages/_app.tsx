@@ -33,9 +33,6 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: "100%",
   },
-  logo: {
-    height: 32,
-  },
   brandButton: {
     padding: theme.spacing(1, 4),
   },
@@ -100,9 +97,15 @@ function App({ Component, pageProps }: AppProps) {
           <Toolbar disableGutters>
             <Grid container justifyContent="space-between" alignItems="center">
               <Grid item>
-                <Typography variant="h5">
-                  B3 Ranking
-                </Typography>
+                <Link href="/" passHref>
+                  <Button fullWidth>
+                    <Image src={logoImg} alt="logo" height={32} width={32} />
+                    <Spacing orientation="vertical" size={2} />
+                    <Typography variant="h5">
+                      B3 Ranking
+                    </Typography>
+                  </Button>
+                </Link>
               </Grid>
 
               <Grid item>
@@ -144,12 +147,12 @@ function App({ Component, pageProps }: AppProps) {
             <Box>
               <Grid container direction="column" spacing={2}>
                 <Grid item>
-                  <Link href="/ranking" passHref >
+                  <Link href="/" passHref >
                     <Button
                       fullWidth
                       className={classes.brandButton}
                     >
-                      <Image src={logoImg} alt="logo" className={classes.logo} />
+                      <Image src={logoImg} alt="logo" height={32} width={32} />
                       <Spacing orientation="vertical" size={2} />
                       <Typography variant="h6">B3 Ranking</Typography>
                     </Button>
