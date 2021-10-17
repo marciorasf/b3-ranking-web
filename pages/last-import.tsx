@@ -18,7 +18,7 @@ import { Visibility as ShowIndicatorsIcon } from "@material-ui/icons"
 import { useState } from "react"
 
 import serverApi from '../utils/server-api'
-import { StockImport } from '../utils/protocols'
+import { Stock, StockImport } from '../utils/protocols'
 import useDidMount from '../hooks/useDidMount'
 import { Spacing } from '../components'
 
