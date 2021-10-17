@@ -23,14 +23,6 @@ const Ranking: NextPage = () => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Link href="/" passHref >
-          <MuiLink>
-            Home
-          </MuiLink>
-        </Link>
-      </Grid>
-
-      <Grid item xs={12}>
         <Table>
           <TableHead>
             <TableRow>
