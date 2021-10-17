@@ -39,7 +39,7 @@ const Ranking: NextPage = () => {
   })
   const [paginationOptions, setPaginationOptions] = useState<PaginationOptions>({
     page: 0,
-    rowsPerPage: 25
+    rowsPerPage: 10
   })
 
   async function getAndUpdateStrategies() {
