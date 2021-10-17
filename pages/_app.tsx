@@ -2,14 +2,15 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Link from "next/link"
 
-import { CssBaseline, Container, AppBar, Toolbar, Typography, Grid, Link as MuiLink } from "@material-ui/core"
+import { CssBaseline, Container, AppBar, Toolbar, Typography, Grid, Link as MuiLink, ThemeProvider } from "@material-ui/core"
 
 import { Spacing } from '../components'
 import '../styles/globals.css'
+import theme from "../styles/theme"
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Head>
         <title>B3 Ranking</title>
@@ -72,7 +73,7 @@ function App({ Component, pageProps }: AppProps) {
       <Container>
         <Component {...pageProps} />
       </Container>
-    </>
+    </ThemeProvider>
   )
 }
 export default App
