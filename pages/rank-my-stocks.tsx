@@ -11,7 +11,10 @@ import {
   Table,
   TableBody,
   TableCell,
+  TableContainer,
+  TableFooter,
   TableHead,
+  TablePagination,
   TableRow,
   TextField,
 } from "@material-ui/core"
@@ -24,12 +27,22 @@ type Options = {
   strategy?: string
   stocks: string
 }
+
+type PaginationOptions = {
+  page: number
+  rowsPerPage: number
+}
+
 const RankMyStocks: NextPage = () => {
   const [ranking, setRanking] = useState<StockWithPosition[]>([])
   const [strategies, setStrategies] = useState<string[]>([])
   const [options, setOptions] = useState<Options>({
     strategy: "greenblatt",
     stocks: "ITSA, ARZZ",
+  })
+  const [paginationOptions, setPaginationOptions] = useState<PaginationOptions>({
+    page: 0,
+    rowsPerPage: 25
   })
 
   async function getAndUpdateStrategies() {
@@ -59,6 +72,17 @@ const RankMyStocks: NextPage = () => {
     setRanking([])
     const result = await serverApi.find(findOptions)
     setRanking(result)
+  }
+
+  function handleChangePaginationOptions(option: keyof PaginationOptions, value: number) {
+    setPaginationOptions({
+      ...paginationOptions,
+      [option]: value
+    })
+  }
+
+  function rowsToDisplay(page: number, rowsPerPage: number) {
+    return [page * rowsPerPage, page * rowsPerPage + rowsPerPage]
   }
 
   useDidMount(() => {
@@ -98,7 +122,6 @@ const RankMyStocks: NextPage = () => {
               fullWidth
               onChange={({ target }) => handleChangeOptions("stocks", target.value)}
             />
-
           </Grid>
 
           <Grid item>
@@ -114,33 +137,53 @@ const RankMyStocks: NextPage = () => {
       </Grid>
 
       <Grid item xs={12}>
-        <Table size="small">
-          <TableHead>
-            <TableRow>
-              <TableCell>
-                Position
-              </TableCell>
-
-              <TableCell>
-                Stock Code
-              </TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {ranking.map(stock => (
+        <TableContainer>
+          <Table size="small">
+            <TableHead>
               <TableRow>
                 <TableCell>
-                  {stock.position}
+                  Position
                 </TableCell>
 
                 <TableCell>
-                  {stock.code}
+                  Stock Code
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHead>
+
+            <TableBody>
+              {ranking
+                .slice(...rowsToDisplay(paginationOptions.page, paginationOptions.rowsPerPage))
+                .map(stock => (
+                  <TableRow>
+                    <TableCell>
+                      {stock.position}
+                    </TableCell>
+
+                    <TableCell>
+                      {stock.code}
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25]}
+                  colSpan={2}
+                  count={ranking.length}
+                  rowsPerPage={paginationOptions.rowsPerPage}
+                  page={paginationOptions.page}
+                  onPageChange={(_event, page) => { handleChangePaginationOptions("page", page) }}
+                  onRowsPerPageChange={({ target }) => {
+                    handleChangePaginationOptions("rowsPerPage", parseInt(target.value))
+                  }}
+                />
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </TableContainer>
       </Grid>
     </Grid>
   )
