@@ -2,7 +2,16 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Link from "next/link"
 
-import { CssBaseline, Container, AppBar, Toolbar, Typography, Grid, Link as MuiLink, ThemeProvider } from "@material-ui/core"
+import {
+  AppBar,
+  Button,
+  Container,
+  CssBaseline,
+  Grid,
+  ThemeProvider,
+  Toolbar,
+  Typography,
+} from "@material-ui/core"
 
 import { Spacing } from '../components'
 import '../styles/globals.css'
@@ -18,7 +27,7 @@ function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AppBar position="static" color="secondary">
+      <AppBar position="static">
         <Container>
           <Toolbar disableGutters>
             <Grid container justifyContent="space-between" alignItems="center">
@@ -29,36 +38,36 @@ function App({ Component, pageProps }: AppProps) {
               </Grid>
 
               <Grid item>
-                <Grid container spacing={4}>
+                <Grid container spacing={1}>
                   <Grid item>
                     <Link href="/" passHref >
-                      <MuiLink>
+                      <Button>
                         Home
-                      </MuiLink>
+                      </Button>
                     </Link>
                   </Grid>
 
                   <Grid item>
                     <Link href="/last-import" passHref >
-                      <MuiLink>
+                      <Button>
                         Last Import
-                      </MuiLink>
+                      </Button>
                     </Link>
                   </Grid>
 
                   <Grid item>
                     <Link href="/ranking" passHref >
-                      <MuiLink>
+                      <Button>
                         Ranking
-                      </MuiLink>
+                      </Button>
                     </Link>
                   </Grid>
 
                   <Grid item>
                     <Link href="/rank-my-stocks" passHref >
-                      <MuiLink>
+                      <Button>
                         Rank My Stocks
-                      </MuiLink>
+                      </Button>
                     </Link>
                   </Grid>
                 </Grid>
