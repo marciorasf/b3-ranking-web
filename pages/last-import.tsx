@@ -142,7 +142,7 @@ const LastImport: NextPage = () => {
         </Grid>
 
         <Grid item xs={12}>
-          <Spacing orientation="horizontal" size={2} />
+          <Spacing orientation="horizontal" size={4} />
 
           <Button onClick={handleForceImport} color="secondary" variant="outlined" fullWidth>
             Force New Import
@@ -156,7 +156,7 @@ const LastImport: NextPage = () => {
         onClose={handleClosePopover}
         anchorOrigin={{
           vertical: 'center',
-          horizontal: 'center',
+          horizontal: 'left',
         }}
       >
         {popoverData?.stock && (
