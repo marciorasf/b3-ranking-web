@@ -26,7 +26,10 @@ import useDidMount from '../hooks/useDidMount'
 const Ranking: NextPage = () => {
   const [ranking, setRanking] = useState<StockWithPosition[]>([])
   const [strategies, setStrategies] = useState<string[]>([])
-  const [options, setOptions] = useState<RankingOptions>()
+  const [options, setOptions] = useState<RankingOptions>({
+    strategy: "greenblatt",
+    filterSameEnterpriseStocks: true
+  })
 
   async function getAndUpdateStrategies() {
     const result = await serverApi.strategies()
@@ -41,7 +44,6 @@ const Ranking: NextPage = () => {
   }
 
   async function updateRanking() {
-    console.log(options)
     const result = await serverApi.ranking()
     setRanking(result)
   }
@@ -96,7 +98,7 @@ const Ranking: NextPage = () => {
               variant="contained"
               onClick={updateRanking}
             >
-              Rank
+              Update Rank
             </Button>
           </Grid>
         </Grid>
