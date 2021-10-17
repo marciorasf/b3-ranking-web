@@ -21,6 +21,7 @@ import serverApi from '../utils/server-api'
 import { Stock, StockImport } from '../utils/protocols'
 import useDidMount from '../hooks/useDidMount'
 import { Spacing, TableWithPagination } from '../components'
+import Notification from '../components/notification'
 
 const LastImport: NextPage = () => {
   const [lastImport, setLastImport] = useState<StockImport>()
@@ -43,6 +44,11 @@ const LastImport: NextPage = () => {
 
   function handleClosePopover() {
     setPopoverData(null)
+  }
+
+  function handleForceImport() {
+    Notification.success({ message: "A new import was triggered. If everything succeed, a new import will be available in 30 minutes." })
+    serverApi.forceImport()
   }
 
   useDidMount(() => {
@@ -138,7 +144,7 @@ const LastImport: NextPage = () => {
         <Grid item xs={12}>
           <Spacing orientation="horizontal" size={2} />
 
-          <Button onClick={serverApi.forceImport} color="secondary" variant="outlined" fullWidth>
+          <Button onClick={handleForceImport} color="secondary" variant="outlined" fullWidth>
             Force New Import
           </Button>
         </Grid>
