@@ -97,7 +97,7 @@ const Ranking: NextPage = () => {
               variant="contained"
               onClick={updateRanking}
             >
-              Update Rank
+              Update Ranking
             </Button>
           </Grid>
         </Grid>
