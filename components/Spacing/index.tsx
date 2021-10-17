@@ -2,12 +2,6 @@ import React from "react"
 
 import { Divider as MuiDivider, useTheme, makeStyles } from "@material-ui/core"
 
-const useStyles = makeStyles({
-  divider: {
-    backgroundColor: "transparent",
-  },
-})
-
 type SpacingProps = {
   orientation: "horizontal" | "vertical"
   size: number
@@ -25,14 +19,12 @@ const Spacing: React.FC<SpacingProps> = (props) => {
     ...(orientation === "vertical"
       ? { height: "auto", width: theme.spacing(size) }
       : {}),
+    backgroundColor: "transparent"
   }
-
-  const classes = useStyles()
 
   return (
     <MuiDivider
       orientation={orientation}
-      className={classes.divider}
       style={{ ...customProps }}
     />
   )
