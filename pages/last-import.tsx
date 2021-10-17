@@ -157,7 +157,6 @@ const LastImport: NextPage = () => {
 
             <Grid container spacing={0}>
               {Object.entries(popoverData?.stock.indicatorsValues)
-                .slice(0, 5)
                 .filter(([indicator]) => indicator !== "_id")
                 .map(([indicator, value]) => (
                   <Grid item xs={12}>
