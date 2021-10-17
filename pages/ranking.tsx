@@ -80,8 +80,10 @@ const Ranking: NextPage = () => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={options?.filterStocks}
-                    onChange={({ target }) => handleChangeOptions("filterStocks", target.checked)}
+                    checked={options?.filterSameEnterpriseStocks}
+                    onChange={({ target }) => handleChangeOptions(
+                      "filterSameEnterpriseStocks", target.checked
+                    )}
                   />}
                 label="Filter same enterprise stocks"
               />
