@@ -4,8 +4,8 @@ import {
   Box,
   Button,
   Container,
-  IconButton,
   Grid,
+  IconButton,
   Popover,
   Table,
   TableBody,
@@ -15,7 +15,7 @@ import {
   Typography,
 } from "@material-ui/core"
 import { Visibility as ShowIndicatorsIcon } from "@material-ui/icons"
-import { ReactNode, useState } from "react"
+import { useState } from "react"
 
 import serverApi from '../utils/server-api'
 import { StockImport } from '../utils/protocols'
@@ -88,6 +88,12 @@ const LastImport: NextPage = () => {
         </Grid>
 
         <Grid item xs={12}>
+          <Typography variant="h6">
+            Stocks:
+          </Typography>
+
+          <Spacing orientation="horizontal" size={1} />
+
           <Table size="small">
             <TableHead>
               <TableRow>
@@ -140,14 +146,17 @@ const LastImport: NextPage = () => {
         anchorEl={popoverData?.element}
         onClose={handleClosePopover}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: 'center',
+          horizontal: 'center',
         }}
       >
         {popoverData?.stock && (
-          <Container>
-            <Grid container spacing={1}>
+          <Container >
+            <Spacing orientation="horizontal" size={1} />
+
+            <Grid container spacing={0}>
               {Object.entries(popoverData?.stock.indicatorsValues)
+                .slice(0, 5)
                 .filter(([indicator]) => indicator !== "_id")
                 .map(([indicator, value]) => (
                   <Grid item xs={12}>
@@ -158,6 +167,8 @@ const LastImport: NextPage = () => {
                 )
                 )}
             </Grid>
+
+            <Spacing orientation="horizontal" size={1} />
           </Container>
         )}
       </Popover>
