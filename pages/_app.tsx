@@ -10,8 +10,8 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <CssBaseline />
       <Head>
-        <title>B3 Magical Formula</title>
-        <meta name="description" content="B3 Magical Formula" />
+        <title>B3 Ranking</title>
+        <meta name="description" content="B3 Ranking" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
