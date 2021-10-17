@@ -31,11 +31,10 @@ const LastImport: NextPage = () => {
 
   async function getAndUpdateLastImport() {
     const result = await serverApi.lastImport()
-    console.log(result)
     setLastImport(result)
   }
 
-  function handleOpenPopover(target: EventTarget, stock: Stock) {
+  function handleOpenPopover(target: Element, stock: Stock) {
     setPopoverData({
       element: target,
       stock: stock
