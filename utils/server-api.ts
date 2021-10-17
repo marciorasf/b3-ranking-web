@@ -18,7 +18,11 @@ const serverApi = {
   },
   async lastImport(): Promise<StockImport> {
     const response = await apiService.get("last-import")
-    return response.data as StockImport
+    const lastImport = response.data as StockImport
+    lastImport.stocks.sort((a, b) => {
+      return a.code >= b.code ? 1 : -1
+    })
+    return lastImport
   },
   async ranking(options?: RankingOptions): Promise<StockWithPosition[]> {
     const response = await apiService.post("ranking", {
