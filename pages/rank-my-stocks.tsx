@@ -56,6 +56,7 @@ const RankMyStocks: NextPage = () => {
       strategy: options.strategy,
       stocks: parseStockCodes(options.stocks)
     }
+    setRanking([])
     const result = await serverApi.find(findOptions)
     setRanking(result)
   }

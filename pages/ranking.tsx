@@ -43,6 +43,7 @@ const Ranking: NextPage = () => {
   }
 
   async function updateRanking() {
+    setRanking([])
     const result = await serverApi.ranking(options)
     setRanking(result)
   }

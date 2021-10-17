@@ -21,11 +21,17 @@ const serverApi = {
     return response.data as StockImport
   },
   async ranking(options?: RankingOptions): Promise<StockWithPosition[]> {
-    const response = await apiService.post("ranking", options)
+    const response = await apiService.post("ranking", {
+      strategy: options?.strategy,
+      filter_same_enterprise_stocks: options?.filterSameEnterpriseStocks
+    })
     return response.data as StockWithPosition[]
   },
   async find(options: FindOptions): Promise<StockWithPosition[]> {
-    const response = await apiService.post("find", options)
+    const response = await apiService.post("find", {
+      strategy: options?.strategy,
+      stocks: options.stocks
+    })
     return response.data as StockWithPosition[]
   },
   async strategies(): Promise<string[]> {
