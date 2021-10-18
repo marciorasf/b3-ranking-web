@@ -3,10 +3,12 @@ import React, { useState, ReactElement } from "react"
 import {
   Table,
   TableBody,
+  TableCell,
   TableContainer,
   TableFooter,
   TablePagination,
   TableRow,
+  Typography,
 } from "@material-ui/core"
 
 type TableWithPagination = {
@@ -48,9 +50,23 @@ const TableWithPagination: React.FC<TableWithPagination> = ({
       <Table size="small">
         {head}
         <TableBody>
-          {rows
-            .slice(...rowsToDisplay(paginationOptions.page, paginationOptions.rowsPerPage))
-            .map(bodyRowFn)
+          {rows.length
+            ? rows
+              .slice(...rowsToDisplay(paginationOptions.page, paginationOptions.rowsPerPage))
+              .map(bodyRowFn)
+            : (
+              <TableRow>
+                <TableCell colSpan={colSpan} >
+                  <Typography
+                    variant="body1"
+                    color="secondary"
+                    style={{ fontWeight: "bold" }}
+                  >
+                    There is no row to display
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            )
           }
         </TableBody>
         <TableFooter>
