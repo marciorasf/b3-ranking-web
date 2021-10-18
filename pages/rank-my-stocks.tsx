@@ -104,6 +104,7 @@ const RankMyStocks: NextPage = () => {
               value={options.stocks}
               placeholder="B3SA, SAPR"
               onChange={({ target }) => handleChangeOptions("stocks", target.value)}
+              helperText="Only the enterprise identifier without the stock type, separated with comma: B3SA, SAPR"
             />
           </Grid>
 
