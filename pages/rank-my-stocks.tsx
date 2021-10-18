@@ -32,6 +32,7 @@ const RankMyStocks: NextPage = () => {
     strategy: "greenblatt",
     stocks: "",
   })
+  const [loading, setLoading] = useState<boolean>(false)
 
   async function getAndUpdateStrategies() {
     const result = await serverApi.strategies()
@@ -53,6 +54,8 @@ const RankMyStocks: NextPage = () => {
   }
 
   async function updateRanking() {
+    setLoading(true)
+
     const findOptions: FindOptions = {
       strategy: options.strategy,
       stocks: parseStockCodes(options.stocks)
@@ -60,6 +63,8 @@ const RankMyStocks: NextPage = () => {
     setRanking([])
     const result = await serverApi.find(findOptions)
     setRanking(result)
+
+    setLoading(false)
   }
 
   useDidMount(() => {
@@ -144,6 +149,7 @@ const RankMyStocks: NextPage = () => {
             )
           }
           colSpan={2}
+          loading={loading}
         />
       </Grid>
     </Grid>

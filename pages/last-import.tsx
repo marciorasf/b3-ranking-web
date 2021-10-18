@@ -182,8 +182,8 @@ const LastImport: NextPage = () => {
       </Popover>
     </>
   ) : (
-    <Typography variant="h4">
-      Fetching data...
+    <Typography variant="h6">
+      Loading data...
     </Typography>
   )
 }

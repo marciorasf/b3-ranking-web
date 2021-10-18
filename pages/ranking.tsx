@@ -29,6 +29,7 @@ const Ranking: NextPage = () => {
     strategy: "greenblatt",
     filterSameEnterpriseStocks: true
   })
+  const [loading, setLoading] = useState<boolean>(false)
 
   async function getAndUpdateStrategies() {
     const result = await serverApi.strategies()
@@ -43,9 +44,13 @@ const Ranking: NextPage = () => {
   }
 
   async function updateRanking() {
+    setLoading(true)
+
     setRanking([])
     const result = await serverApi.ranking(options)
     setRanking(result)
+
+    setLoading(false)
   }
 
   useDidMount(() => {
@@ -134,6 +139,7 @@ const Ranking: NextPage = () => {
             )
           }
           colSpan={2}
+          loading={loading}
         />
       </Grid>
     </Grid>
