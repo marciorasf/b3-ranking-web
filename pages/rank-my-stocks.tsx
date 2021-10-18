@@ -91,7 +91,7 @@ const RankMyStocks: NextPage = () => {
             </FormControl>
           </Grid>
 
-          <Grid item xs>
+          <Grid item sm xs={12}>
             <TextField
               fullWidth
               label="Stocks"
