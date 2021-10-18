@@ -1,6 +1,7 @@
 import React, { useState, ReactElement } from "react"
 
 import {
+  CircularProgress,
   Table,
   TableBody,
   TableCell,
@@ -10,12 +11,14 @@ import {
   TableRow,
   Typography,
 } from "@material-ui/core"
+import { Spacing } from "."
 
 type TableWithPagination = {
   head: ReactElement
   rows: any[]
   bodyRowFn: (row: any) => ReactElement
   colSpan: number
+  loading?: boolean
 }
 
 type PaginationOptions = {
@@ -27,7 +30,8 @@ const TableWithPagination: React.FC<TableWithPagination> = ({
   head,
   rows,
   bodyRowFn,
-  colSpan
+  colSpan,
+  loading
 }) => {
   const [paginationOptions, setPaginationOptions] = useState<PaginationOptions>({
     page: 0,
@@ -50,24 +54,39 @@ const TableWithPagination: React.FC<TableWithPagination> = ({
       <Table size="small">
         {head}
         <TableBody>
-          {rows.length
-            ? rows
-              .slice(...rowsToDisplay(paginationOptions.page, paginationOptions.rowsPerPage))
-              .map(bodyRowFn)
-            : (
-              <TableRow>
-                <TableCell colSpan={colSpan} >
-                  <Typography
-                    variant="body1"
-                    color="secondary"
-                    style={{ fontWeight: "bold" }}
-                  >
-                    There is no row to display
-                  </Typography>
-                </TableCell>
-              </TableRow>
-            )
-          }
+          {loading ? (
+            <TableRow>
+              <TableCell colSpan={colSpan} >
+                <Typography
+                  variant="body1"
+                  color="secondary"
+                  style={{ display: "flex", alignItems: "center", fontWeight: "bold" }}
+                >
+                  Loading data
+                  <Spacing orientation="vertical" size={2} />
+                  <CircularProgress size={14} color="secondary" />
+                </Typography>
+              </TableCell>
+            </TableRow>
+          ) : (
+            rows.length
+              ? rows
+                .slice(...rowsToDisplay(paginationOptions.page, paginationOptions.rowsPerPage))
+                .map(bodyRowFn)
+              : (
+                <TableRow>
+                  <TableCell colSpan={colSpan} >
+                    <Typography
+                      variant="body1"
+                      color="secondary"
+                      style={{ fontWeight: "bold" }}
+                    >
+                      There is no row to display
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              )
+          )}
         </TableBody>
         <TableFooter>
           <TableRow>
