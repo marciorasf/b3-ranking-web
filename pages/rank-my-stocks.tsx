@@ -104,7 +104,7 @@ const RankMyStocks: NextPage = () => {
 
           <Grid item>
             <Button
-              color="secondary"
+              color="primary"
               variant="contained"
               onClick={updateRanking}
             >

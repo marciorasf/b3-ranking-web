@@ -92,7 +92,7 @@ function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: theme.palette.header.main }}>
         <Container>
           <Toolbar disableGutters>
             <Grid container justifyContent="space-between" alignItems="center">

@@ -144,7 +144,7 @@ const LastImport: NextPage = () => {
         <Grid item xs={12}>
           <Spacing orientation="horizontal" size={4} />
 
-          <Button onClick={handleForceImport} color="secondary" variant="outlined" fullWidth>
+          <Button onClick={handleForceImport} color="primary" variant="outlined" fullWidth>
             Force New Import
           </Button>
         </Grid>

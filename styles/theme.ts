@@ -13,6 +13,9 @@ const theme = createTheme({
       paper: "#303030",
       default: "#202020",
     },
+    header: {
+      main: "#1D1D1D",
+    },
   },
   typography: {
     fontFamily: '"Nunito", "Helvetica", "Arial", sans-serif',
