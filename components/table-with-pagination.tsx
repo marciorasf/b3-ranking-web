@@ -13,7 +13,7 @@ type TableWithPagination = {
   head: ReactElement
   rows: any[]
   bodyRowFn: (row: any) => ReactElement
-  paginationColSpan: number
+  colSpan: number
 }
 
 type PaginationOptions = {
@@ -25,7 +25,7 @@ const TableWithPagination: React.FC<TableWithPagination> = ({
   head,
   rows,
   bodyRowFn,
-  paginationColSpan
+  colSpan
 }) => {
   const [paginationOptions, setPaginationOptions] = useState<PaginationOptions>({
     page: 0,
@@ -57,7 +57,7 @@ const TableWithPagination: React.FC<TableWithPagination> = ({
           <TableRow>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
-              colSpan={paginationColSpan}
+              colSpan={colSpan}
               count={rows.length}
               rowsPerPage={paginationOptions.rowsPerPage}
               page={paginationOptions.page}

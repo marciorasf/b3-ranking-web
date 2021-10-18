@@ -143,7 +143,7 @@ const RankMyStocks: NextPage = () => {
               </TableRow>
             )
           }
-          paginationColSpan={2}
+          colSpan={2}
         />
       </Grid>
     </Grid>

@@ -133,7 +133,7 @@ const LastImport: NextPage = () => {
                 </TableCell>
               </TableRow>
             )}
-            paginationColSpan={3}
+            colSpan={3}
           />
         </Grid>
 
