@@ -2,13 +2,10 @@ import type { NextPage } from 'next'
 
 import {
   Box,
-  Button,
   Container,
   Grid,
   IconButton,
   Popover,
-  Table,
-  TableBody,
   TableCell,
   TableHead,
   TableRow,
@@ -21,7 +18,6 @@ import serverApi from '../utils/server-api'
 import { Stock, StockImport } from '../utils/protocols'
 import useDidMount from '../hooks/useDidMount'
 import { Spacing, TableWithPagination } from '../components'
-import Notification from '../components/notification'
 
 const LastImport: NextPage = () => {
   const [lastImport, setLastImport] = useState<StockImport>()
@@ -44,11 +40,6 @@ const LastImport: NextPage = () => {
 
   function handleClosePopover() {
     setPopoverData(null)
-  }
-
-  function handleForceImport() {
-    Notification.success({ message: "A new import was triggered. If everything succeed, a new import will be available in 30 minutes." })
-    serverApi.forceImport()
   }
 
   useDidMount(() => {
@@ -139,14 +130,6 @@ const LastImport: NextPage = () => {
 
         <Grid item xs={12}>
           Current Price* = price of the stock when the data was extracted.
-        </Grid>
-
-        <Grid item xs={12}>
-          <Spacing orientation="horizontal" size={4} />
-
-          <Button onClick={handleForceImport} color="primary" variant="outlined" fullWidth>
-            Force New Import
-          </Button>
         </Grid>
       </Grid>
 
