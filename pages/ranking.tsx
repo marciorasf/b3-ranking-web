@@ -63,11 +63,11 @@ const Ranking: NextPage = () => {
         <Grid container alignItems="center" spacing={3}>
           <Grid item >
             <FormControl variant="outlined">
-              <InputLabel>Strategy</InputLabel>
+              <InputLabel>Estratégia</InputLabel>
 
               <Select
                 value={options?.strategy}
-                label="Strategy"
+                label="Estratégia"
                 onChange={({ target }) =>
                   handleChangeOptions(
                     "strategy",
@@ -92,7 +92,7 @@ const Ranking: NextPage = () => {
                       "filterSameEnterpriseStocks", target.checked
                     )}
                   />}
-                label="Filter same enterprise stocks"
+                label="Manter apenas um código por empresa"
               />
             </FormGroup>
           </Grid>
@@ -103,7 +103,7 @@ const Ranking: NextPage = () => {
               variant="contained"
               onClick={updateRanking}
             >
-              Update Ranking
+              Atualizar ranking
             </Button>
           </Grid>
         </Grid>
@@ -116,11 +116,11 @@ const Ranking: NextPage = () => {
             <TableHead>
               <TableRow>
                 <TableCell>
-                  Position
+                  Rank
                 </TableCell>
 
                 <TableCell>
-                  Stock Code
+                  Código da ação
                 </TableCell>
               </TableRow>
             </TableHead>

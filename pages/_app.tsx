@@ -75,10 +75,10 @@ function App({ Component, pageProps }: AppProps) {
 
     return (
       <>
-        {item("/", "Home")}
-        {item("/last-import", "Last Import")}
+        {/* {item("/", "Home")} */}
+        {item("/last-import", "Dados atuais")}
         {item("/ranking", "Ranking")}
-        {item("/rank-my-stocks", "Rank My Stocks")}
+        {/* {item("/rank-my-stocks", "Rank My Stocks")} */}
       </>
     )
   }

@@ -62,7 +62,7 @@ const TableWithPagination: React.FC<TableWithPagination> = ({
                   color="secondary"
                   style={{ display: "flex", alignItems: "center", fontWeight: "bold" }}
                 >
-                  Loading data
+                  Carregando dados
                   <Spacing orientation="vertical" size={2} />
                   <CircularProgress size={14} color="secondary" />
                 </Typography>
@@ -81,7 +81,7 @@ const TableWithPagination: React.FC<TableWithPagination> = ({
                       color="secondary"
                       style={{ fontWeight: "bold" }}
                     >
-                      There is no row to display
+                      Nenhum dado para mostrar
                     </Typography>
                   </TableCell>
                 </TableRow>

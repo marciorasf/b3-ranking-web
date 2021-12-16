@@ -52,7 +52,7 @@ const LastImport: NextPage = () => {
         <Grid item xs={12}>
           <Box display="flex" alignItems="center">
             <Typography variant="h6">
-              Date:
+              Data:
             </Typography>
 
             <Spacing orientation="vertical" size={1} />
@@ -66,7 +66,7 @@ const LastImport: NextPage = () => {
         <Grid item xs={12}>
           <Box display="flex" alignItems="center">
             <Typography variant="h6">
-              Errors:
+              Erros:
             </Typography>
 
             <Spacing orientation="vertical" size={1} />
@@ -79,7 +79,7 @@ const LastImport: NextPage = () => {
 
         <Grid item xs={12}>
           <Typography variant="h6">
-            Stocks:
+            Ações:
           </Typography>
 
           <Spacing orientation="horizontal" size={1} />
@@ -90,15 +90,15 @@ const LastImport: NextPage = () => {
               <TableHead>
                 <TableRow>
                   <TableCell>
-                    Stock Code
+                    Código da ação
                   </TableCell>
 
                   <TableCell>
-                    Price
+                    Preço
                   </TableCell>
 
                   <TableCell>
-                    Indicators
+                    Indicadores
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -162,7 +162,7 @@ const LastImport: NextPage = () => {
     </>
   ) : (
     <Typography variant="h6">
-      Loading data...
+      Carregando dados...
     </Typography>
   )
 }
