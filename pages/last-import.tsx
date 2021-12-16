@@ -94,7 +94,7 @@ const LastImport: NextPage = () => {
                   </TableCell>
 
                   <TableCell>
-                    Current Price*
+                    Price
                   </TableCell>
 
                   <TableCell>
@@ -126,10 +126,6 @@ const LastImport: NextPage = () => {
             )}
             colSpan={3}
           />
-        </Grid>
-
-        <Grid item xs={12}>
-          Current Price* = price of the stock when the data was extracted.
         </Grid>
       </Grid>
 
